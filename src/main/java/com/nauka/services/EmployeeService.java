@@ -4,10 +4,8 @@ import com.nauka.models.Employee;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.Query;
 import org.springframework.stereotype.Service;
 
-import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,6 +18,11 @@ public class EmployeeService {
         this.entityManager = entityManager;
     }
 
+    /*
+    По заданию, я не совсем понял ожидаемую реализацию этих функций, но остановился на этом способе через EntityManager.
+    Я понимаю, что можно сделать проще, используя возможности репозиторией, например JpaRepository.
+    Я бы мог написать то же самое, и с помощью @Query-аннотации, но решил остановиться только на ОДНОМ способе.
+     */
     public Optional<Employee> findById(long id) {
         try {
             Employee employee = (Employee) entityManager.
